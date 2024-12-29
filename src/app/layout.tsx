@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar";
 import localFont from 'next/font/local';
 
-import { Work_Sans } from "next/font/google";
+// import { Work_Sans } from "next/font/google";
 
 import "./globals.css";
 
@@ -10,9 +10,10 @@ const iWriter = localFont({
   weight: "200",
 });
 
-export const logoFont = Work_Sans({
-  weight: "400"
-})
+// const logoFont = Work_Sans({
+//   weight: "400",
+//   subsets: ["latin"]
+// })
 
 export default function RootLayout({ children }: {
   children: React.ReactElement,
@@ -20,11 +21,11 @@ export default function RootLayout({ children }: {
 
   return (
     <html>
-      <body className={"h-screen m-auto bg-[#101010] text-[#fff] " + iWriter.className}>
-        <header className="fixed w-full h-20 backdrop-blur-lg">
+      <body className={"bg-[#101010] text-[#fff] " + iWriter.className}>
+        <header className="px-5 lg:px-0 fixed w-full h-14 lg:h-20 backdrop-blur-lg">
           <NavBar />
         </header>
-        <main className="">
+        <main className="px-5 lg:px-0 pt-28 lg:pt-36 pb-28 h-full max-w-3xl mx-auto">
           {children}
         </main>
       </body>

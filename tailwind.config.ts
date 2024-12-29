@@ -14,5 +14,18 @@ export default {
   //     },
   //   },
   // },
-  plugins: [],
+  theme: {
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "100ch"
+          }
+        }
+      }
+    }
+  },
+  plugins: [
+    require("@tailwindcss/typography")
+  ],
 } satisfies Config;
