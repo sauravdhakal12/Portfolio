@@ -1,7 +1,11 @@
 import NavBar from "./components/NavBar";
 import localFont from 'next/font/local';
-
-// import { Work_Sans } from "next/font/google";
+import type {
+  Metadata,
+} from 'next'
+import {
+  GoogleAnalytics,
+} from "@next/third-parties/google";
 
 import "./globals.css";
 
@@ -10,10 +14,21 @@ const iWriter = localFont({
   weight: "200",
 });
 
-// const logoFont = Work_Sans({
-//   weight: "400",
-//   subsets: ["latin"]
-// })
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.sauravdhakal.com.np"),
+  keywords: ["SauravDhakal", " Saurav Dhakal Blogs"],
+  title: {
+    default: "SauravDhakal",
+    template: "%s | SauravDhakal"
+  },
+  openGraph: {
+    description: `
+      A final-year Software Engineering student from Nepal, currently working as a Backend Intern at Void Nepal.
+      I will be sharing my learnings and experiences here related to anything backend or whatever I'm into at the moment
+    `,
+    images: [""]
+  }
+};
 
 export default function RootLayout({ children }: {
   children: React.ReactElement,
@@ -29,6 +44,7 @@ export default function RootLayout({ children }: {
           {children}
         </main>
       </body>
+      <GoogleAnalytics gaId="G-LC1SB78G7R" />
     </html>
   )
 }

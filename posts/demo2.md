@@ -3,6 +3,7 @@ title: 'When to Use Static Generation v.s. Server-side Rendering'
 subtitle: 'Demo 123 Lorem Ipsum sasas as as Hello
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut illum, adipisci ipsam vitae iure delectus libero. Nemo asperiores possimus enim vel ipsum nobis, unde praesentium consequuntur nesciunt recusandae deleniti saepe.'
 date: 'Dec 04 2024'
+tags: ["Hello", "Demo", "123"]
 ---
 
 ## Static Generation

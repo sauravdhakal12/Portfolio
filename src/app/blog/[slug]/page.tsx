@@ -3,6 +3,7 @@ import path from 'path';
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 
+
 const getPostContent = (slug: string) => {
   const postsDirectory = path.join(process.cwd(), 'posts/');
   const postFile = `${postsDirectory}${slug}.md`;
@@ -13,6 +14,21 @@ const getPostContent = (slug: string) => {
     postContent: matterResult.content,
     matterData: matterResult.data
   };
+}
+export async function generateMetadata({ params }: {
+  params: Promise<{
+    slug: string
+  }>
+}) {
+  const p = await params;
+  const metaData = getPostContent(p.slug);
+
+  return {
+    openGraph: {
+      title: metaData.matterData.title,
+      description: metaData.matterData.subtitle,
+    }
+  }
 }
 
 interface PostMetadata {
@@ -64,13 +80,13 @@ export default async function BlogPost(props: { params: Promise<{ slug: string }
         <p className="text-[#aaaaaa] text-lg italic mb-6">
           {matterData.subtitle}
         </p>
-        {/* <p>
-          {matterData.tags.forEach((element: string)  => (
-            <span>{element}</span>
-          ))}
-        </p> */}
         <p className="text-[#dddddd] text-sm mb-1">
-          <span className="bg-[#5a6677] px-1.5 py-0 mr-2 rounded">#demo</span>
+          {matterData.tags ? matterData.tags.map((s: string) => (
+            <span key={s} className="bg-[#5a6677] px-1.5 py-0 mr-2 rounded">#{s}</span>
+          ))
+            :
+            <span key="1" className="bg-[#5a6677] px-1.5 py-0 mr-2 rounded">#untagged</span>
+          }
         </p>
         <p className="text-[#8c8c8c] text-sm">Posted On <span className="font-bold">{matterData.date.toUpperCase()}</span></p>
       </div>
@@ -82,7 +98,9 @@ export default async function BlogPost(props: { params: Promise<{ slug: string }
           prose text-[#dddddd] 
           prose-headings:text-[#eeeeee]
           prose-strong:text-[#dddddd]
+          prose-a:bg-[#2b4555] prose-a:px-2 prose-a:rounded prose-a:text-white prose-a:no-underline prose-a:new
           mx-auto
+          
         ">
         {postContent}
       </Markdown>

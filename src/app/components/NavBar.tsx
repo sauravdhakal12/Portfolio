@@ -2,6 +2,20 @@ import Link from "next/link";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 
+const navMenu = [
+  {
+    id: 1,
+    name: "Home",
+    href: "/"
+  },
+  {
+    id: 2,
+    name: "Posts",
+    href: "/blog"
+  }
+]
+
+
 export default function NavBar() {
   return (
     <nav className="flex justify-between max-w-3xl mx-auto h-14 lg:h-20 items-center">
@@ -20,8 +34,9 @@ export default function NavBar() {
 
       {/* Nav */}
       <div className="flex items-center gap-4 lg:mt-1.5">
-        <Link href={"/"} className="hover:text-gray-400">Home</Link>
-        <Link href={"/blog"} className="hover:text-gray-400">Posts</Link>
+        {navMenu.map((menu) => (
+          <Link key={menu.id} href={menu.href} className="hover:text-gray-400">{menu.name}</Link>
+        ))}
       </div>
 
       {/* Connect */}
