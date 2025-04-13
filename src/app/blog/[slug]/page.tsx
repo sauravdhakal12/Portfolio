@@ -94,7 +94,7 @@ export default async function BlogPost(props: { params: Promise<{ slug: string }
       <Markdown className="
           leading-relaxed
           lg:leading-7
-          lg:text-[16px]
+          lg:text-[18px]
           prose text-[#dddddd] 
           prose-headings:text-[#eeeeee]
           prose-strong:text-[#dddddd]
